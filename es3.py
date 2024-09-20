@@ -1,84 +1,69 @@
-# Write a program that simulates a fortune cookie. The program
-# should display one of five unique fortunes, at random, each
-# time it’s run.
-import random
-# fortune_cookie = random.randint(1,5)
-# print(fortune_cookie)
-
-# name = ["paul","peter","samuel","chima"]
-# print(name[0])
-# print(name.index("paul"))
-
-# for i in name:
-#     print(i)
-
-# number = [10,20,30,50,70]
-# for k in number:
-#     if k > 100:
-#         print("high value")
-#     elif k < 11:
-#         z = k
-#         k=k+1
-#         print("low number",number.index(z))
-#         break
-#     else:
-#         print("poor value")
-
-# exam = "pass"
-
-# while exam == "pass":
-#     print("fail")
-#     break
-
-# 4. Task
+# Task
 # Here’s a bigger challenge. Write the pseudocode for a program
 # where the player and the computer trade places in the number
 # guessing game. That is, the player picks a random number
 # between 1 and 100 that the computer has to guess. Before you
 # start, think about how you guess. If all goes well, try coding the
-# game.
+# game
 
-               # Pseudeocode
+           # Psuedocode
+# Initialize a variable (limited_guess) equals to 3
+# Initialize (player_number) Get a number from the player
+# initialize a variable (computer_guess) equals to 0
+# Initialize a variable (attempts) equals to 0
 
-# set the initial values
-# initialize a variable integer(number) randint (1,100) using random 
-# initialize a variable integer(guess) using input to ask player to take a guess
+# While (limited_guess) is greater than 0
+        # (computer_guess) Get random number from (1, 100)
 
-# guessing the loop
-# write a while loop statement if the guess != number
-# set condition using if statement
-# if guess < 100 print ("lower number")
-# else: print ("higher number")
-# Use the input variable (guess) to ask player to take another guess
+        # (limited_guess) -= 1
+        # (attempts) += 1
 
-# congratulating the player
-# write a print statement to print("congratulation you guess it! The number is", number)
-# write a print statement to exit the looop print("\n\n press the enter key to exit")
+        # If (player_number) greater than (computer_guess)
+            # Display guess higher
+        # If (player_number) is less than (computer_guess)
+            # Dispaly guess lower
+        # Otherwise
+            # Display computer you are correct
+            # Display it took you (attempts) to guess right
+            # Break
+        # Re-initialize (computer_guess) equals to 0
 
+# If (limited_guess) is equals to 0 and (player_number) not equals to (computer_gues)
+    # Display lol after (attempts) tries you could not guess right
 
-            # Interpretation
-#set the initial values
-number = random.randint(1,100)
-guess = int(input("Take a guess: "))
+            # Implementation
+import random
+# Initializations
+limited_guess = 3
+computer_guess = 0
+attempts = 0
+player_number = 0
 
+while player_number not in range(1, 101): # Ensure the player input is between 1 to 100
+    # Get player input
+    player_number = int(input("\nPlease enter a number from (1,100): "))
 
-# guessing the loop
-while guess != number:
-    if guess < 100:
-        print("Lower number")
-    else :
-        print("Higher number")
-    guess = int(input("Take a guess: "))
-       
-# congratulating the player
-    print("\n\tYou guessed it!. The number is", number)
+while limited_guess > 0: # If limited_guess is still greater than 0
+    # Get computer gues
+    computer_guess = random.randint(1,100)
 
-# exit the game
-    input("\n\nPress the enter key to exit")
+    limited_guess -= 1 # Decrement limited_guess
+    print("\nlimited_guess is: ", limited_guess)
+    attempts += 1 # Increment attempts
+    print("attempts is: ", attempts)
+    print("player_number is: ", player_number)
+    print("computer_guess is: ", computer_guess)
 
+    if player_number > computer_guess: # Check if player_number is greater than computer_guess
+        print("\nGuess higher")
+    elif player_number < computer_guess: # Check if player_number is less than computer_guess
+        print("\nGuess lower")
+    else: # If player_number is equals to computer_guess
+        print("\nYou are correct")
+        print("It took you", attempts, "tries to guess rigth")
+        break # Break loop
+    computer_guess = 0 # Re-initialize computer_guess
 
-
-
-# 2. Task
-# Write a program that flips a coin 100 times and then tells you
-# the number of heads and tails.
+# Check if limited_guess is equals to 0 and player_number not equals to computer_guess
+if limited_guess == 0 and player_number != computer_guess:
+    print("\nLol after", attempts, "tries you could not guess rigth")
